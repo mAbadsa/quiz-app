@@ -4,8 +4,8 @@
 
 Project Files
 |
-|** index.html
-|** html_questions.json
-|** assets
-|** styles
-|\_\_ main.js
+|__ index.html
+|__ html_questions.json
+|__ assets
+    |__ styles
+    |__ main.js
