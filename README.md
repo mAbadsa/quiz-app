@@ -8,7 +8,7 @@
 📦quiz-app
  ┣ 📂assets
  ┃ ┗ 📜styles.css
-   ┗ 📜main.js
+ ┃  ┗ 📜main.js
  ┣ 📜index.html
  ┣ 📜html_questions.json
  ┗ 📜README.md
