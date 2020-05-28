@@ -1,10 +1,15 @@
 # quiz-app
 
-> ## Quiz App is a Small Javascript Project For The Beginner Developers
+> #### Quiz App is a Small Javascript Project For The Beginner Developers
 
-**Project Files**  
-├── \_index.html  
-├── \_html_questions.json  
-  ├── \_assets  
-  ├── styles  
-  └── main.js  
+####Project Files
+
+```
+📦quiz-app
+ ┣ 📂assets
+ ┃ ┗ 📜styles.css
+   ┗ 📜main.js
+ ┣ 📜index.html
+ ┣ 📜html_questions.json
+ ┗ 📜README.md
+```
