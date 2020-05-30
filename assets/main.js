@@ -2,8 +2,10 @@ const $questionsCount = document.querySelector(".count span");
 const $indicatorsContainer = document.querySelector(".bullets .spans");
 const $quizArea = document.querySelector(".quiz-area");
 const $answerArea = document.querySelector(".answers-area");
+const $submitButton = document.querySelector(".submit-button");
 
 let currentIndex = 0;
+let rightAnswersCount = 0;
 
 function getQuestions() {
   let myRequest = new XMLHttpRequest();
@@ -18,6 +20,16 @@ function getQuestions() {
 
       // Add Questions
       addQuestions(questionsObj[currentIndex], questionsCount);
+
+      $submitButton.addEventListener("click", (e) => {
+        let rightAnswer = questionsObj[currentIndex].right_answer;
+        console.log(rightAnswer);
+        console.log(currentIndex);
+        // Go to Next question
+        currentIndex++;
+
+        checkAnswer(rightAnswer, questionsCount);
+      });
     }
   };
 
@@ -72,7 +84,7 @@ function addQuestions(questions, numberOgQuestions) {
     $radioButton.id = `answer_${i}`;
     $radioButton.dataset.answer = questions[`answer_${i}`];
 
-    i === 1 ? $radioButton.checked = true : false;
+    i === 1 ? ($radioButton.checked = true) : false;
 
     // Create Label
     let $theLabel = document.createElement("label");
@@ -91,10 +103,25 @@ function addQuestions(questions, numberOgQuestions) {
 
     // Add The Answer Container Div to Answer Area Div
     $answerArea.appendChild($answersContainer);
-
-    currentIndex++;
   }
   //   $quizArea.appendChild;
+}
+
+function checkAnswer(rightAnswer, questionsCount) {
+  let answer = document.getElementsByName("question");
+  let theChoosenAnswer;
+
+  for (let i = 0; i < answer.length; i++) {
+    if (answer[i].checked) {
+      theChoosenAnswer = answer[i].dataset.answer;
+    }
+  }
+
+  console.log(rightAnswer);
+  console.log(theChoosenAnswer);
+  if (rightAnswer === theChoosenAnswer) {
+    rightAnswersCount++;
+  }
 }
 
 getQuestions();
