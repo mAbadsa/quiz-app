@@ -40,7 +40,9 @@ function getQuestions() {
 
         // Handle Indicators Class
         handleIndicatorsClass();
-        
+
+        // Clear Interval Time
+        clearInterval(countDownInterval);
         // Fire CountDown
         countDown(3, questionsCount);
 
@@ -58,7 +60,7 @@ function getQuestions() {
 }
 
 function createIndicators(num) {
-  $questionsCount.innerHTML = num + 1;
+  $questionsCount.innerHTML = num;
 
   for (let i = 0; i < num; i++) {
     // Create indecator
@@ -193,7 +195,6 @@ function countDown(duration, questionCount) {
 
       if (--duration < 0) {
         clearInterval(countDownInterval);
-        console.log("Finished");
         $submitButton.click();
       }
     }, 1000);
