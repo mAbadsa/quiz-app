@@ -40,13 +40,16 @@ function getQuestions() {
 
         // Handle Indicators Class
         handleIndicatorsClass();
+        
+        // Fire CountDown
+        countDown(3, questionsCount);
 
         // Show Result
         showResult(questionsCount);
-
-        // Count Down
       });
-      countDown(10, questionsCount);
+
+      // Fire CountDown
+      countDown(3, questionsCount);
     }
   };
 
@@ -172,5 +175,29 @@ function showResult(questionCount) {
   }
 }
 
+function countDown(duration, questionCount) {
+  if (currentIndex < questionCount) {
+    let minutes, seconds;
+
+    countDownInterval = setInterval(function () {
+      minutes = parseInt(duration / 60);
+      seconds = parseInt(duration % 60);
+
+      // duration--;
+
+      let countDownSpan = `<span>${minutes < 10 ? 0 : ""}${minutes} : ${
+        seconds < 10 ? 0 : ""
+      }${seconds} </span>`;
+
+      $countDownContainer.innerHTML = countDownSpan;
+
+      if (--duration < 0) {
+        clearInterval(countDownInterval);
+        console.log("Finished");
+        $submitButton.click();
+      }
+    }, 1000);
+  }
+}
 
 getQuestions();
