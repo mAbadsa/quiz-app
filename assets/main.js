@@ -29,6 +29,14 @@ function getQuestions() {
         currentIndex++;
 
         checkAnswer(rightAnswer, questionsCount);
+
+        $quizArea.innerHTML = "";
+        $answerArea.innerHTML = "";
+
+        addQuestions(questionsObj[currentIndex], questionsCount);
+
+        // Handle Indicators Class
+        handleIndicatorsClass();
       });
     }
   };
@@ -54,8 +62,6 @@ function createIndicators(num) {
 
 // Add Question To Dom
 function addQuestions(questions, numberOgQuestions) {
-  let keys = Object.keys(questions);
-
   // Create Questions Head
   let $questionsTitle = document.createElement("h3");
 
@@ -123,5 +129,6 @@ function checkAnswer(rightAnswer, questionsCount) {
     rightAnswersCount++;
   }
 }
+
 
 getQuestions();
